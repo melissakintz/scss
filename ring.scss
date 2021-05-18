@@ -1,0 +1,25 @@
+@mixin ring($color, $diametre, $epaisseur){
+  width: $diametre;
+  height: $diametre;
+  border: $epaisseur solid $color;
+  border-radius: 100%;
+  box-shadow: inset $epaisseur/2 $epaisseur/2 $epaisseur/2 darken($color, 10%), $epaisseur/2 $epaisseur/2 $epaisseur/2 darken($color, 10%) ;
+}
+
+
+.ring{
+  @include ring(orange, 300px, 20px);
+}
+
+
+@for $i from 1 through 6 {
+  .ring-#{$i} {
+    z-index: $i;
+    position: absolute;
+    margin-left: $i * 50px;
+    width: ((200px/$i)*$i/2)-($i*10);
+    height: ((200px/$i)*$i/2)-($i*10);
+    border: ((20px/$i)*$i/2)-($i) solid black;
+    border-radius: 100%;
+  }
+}
